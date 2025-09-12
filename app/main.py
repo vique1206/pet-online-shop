@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.database import Base, engine, SessionLocal
-from app.models.product import Product
+from app.models import User, Product
+from app.auth import hash_password
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
@@ -22,3 +23,13 @@ def get_products():
          "count": p.count}
         for p in products
     ]
+
+@app.post("/register")
+def register_user(username: str, email: str, password: str):
+    db = SessionLocal()
+    hashed = hash_password(password)
+    user = User(username=username, email=email, password_hash=hashed)
+    
+    db.add(user)
+    db.commit()
+    return user
