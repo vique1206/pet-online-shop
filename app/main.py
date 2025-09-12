@@ -1,5 +1,3 @@
-from itertools import product
-
 from fastapi import FastAPI
 from app.database import Base, engine, SessionLocal
 from app.models.product import Product
@@ -17,6 +15,7 @@ def get_products():
     products = db.query(Product).all()
     print(len(products))
     db.close()
+    print("bob")
     return [
         {"id": p.id,
          "name": p.name,
