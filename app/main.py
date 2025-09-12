@@ -15,7 +15,6 @@ def get_products():
     products = db.query(Product).all()
     print(len(products))
     db.close()
-    print("bob")
     return [
         {"id": p.id,
          "name": p.name,
