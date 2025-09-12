@@ -8,3 +8,6 @@ class Product(Base):
     name = Column(String)
     price = Column(Integer)
     count = Column(Integer, default=0)
+    
+    def __repr__(self):
+        return f"<Product(name={self.name}, price={self.price})>"

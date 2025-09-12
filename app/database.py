@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, text
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from sqlalchemy.orm import sessionmaker, declarative_base
 
 from app.core import DATABASE_URL
 
@@ -13,4 +13,4 @@ with engine.connect() as conn:
     print(f"{res.fetchone()}")
     
 SessionLocal = sessionmaker(bind=engine, autoflush=False)
-Base = DeclarativeBase
+Base = declarative_base()
