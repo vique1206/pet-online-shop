@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="{{ request.url_for('static', path='products.css') }}">
+    <script src="{{ request.url_for('static', path='products.js') }}"></script>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="/registration" class="btn">Регистрация</a>
+        </div>
+        <div class="header-right">
+            <a href="/cart" class="btn">Корзина</a>
+        </div>
+    </header>
+
+    <main>
+        <h1>Products</h1>
+        <ul class="product-list">
+            {% for product in products %}
+            <li class="product-item" id="product-{{ product.id }}">
+                <div class="product-name">{{ product.name }}</div>
+                <div class="product-price">{{ product.price }}р.</div>
+                <button class="add-to-cart">Add to cart</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

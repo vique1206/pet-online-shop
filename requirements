@@ -3,3 +3,5 @@ uvicorn
 sqlalchemy
 dotenv
 bcrypt
+jinja2
+python-multipart
